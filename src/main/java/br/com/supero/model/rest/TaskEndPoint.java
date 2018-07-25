@@ -9,6 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -93,5 +94,14 @@ public class TaskEndPoint {
 		}
 		return Response.ok(list).build();
 	}
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response delete(@Context UriInfo info) {
+		Map<String, String> map = Util.parseFilter(info.getQueryParameters());
+		taskRB.deletar(map);
+		return Response.ok().build();
+	}
+	
 
 }

@@ -2,6 +2,7 @@ package br.com.supero.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.RequestScoped;
 
@@ -36,6 +37,11 @@ public class TaskRB extends BaseRepository<Task, Long> {
 			e.printStackTrace();
 			return new ArrayList<>();
 		}
+	}
+
+	public void deletar(Map<String, String> map) {
+		 entityManager.remove(entityManager.find(Task.class, Long.parseLong(map.get("id"))));
+		 entityManager.flush();
 	}
 
 }
