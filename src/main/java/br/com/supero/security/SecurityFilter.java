@@ -1,4 +1,4 @@
-package security;
+package br.com.supero.security;
 
 import java.io.IOException;
 
